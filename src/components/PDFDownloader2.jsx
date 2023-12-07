@@ -16,14 +16,14 @@ const PDFDownloader2 = () => {
       format: [width, height],
     });
 
-    pdfDoc.addSvgAsImage(htmlElem.outerHTML, 0, 0, width, height).then(() => {
-      pdfDoc.save("image.pdf");
-    });
-
-    // SVG to PDF
-    // pdfDoc.svg(htmlElem, 0, 0, width, height).then(() => {
+    // pdfDoc.addSvgAsImage(htmlElem.outerHTML, 0, 0, width, height).then(() => {
     //   pdfDoc.save("image.pdf");
     // });
+
+    // SVG to PDF
+    pdfDoc.svg(htmlElem, 0, 0, width, height).then(() => {
+      pdfDoc.save("image.pdf");
+    });
   };
 
   return (
