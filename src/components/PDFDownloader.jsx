@@ -12,15 +12,14 @@ const PDFDownloader = () => {
     const height = parseFloat(getComputedStyle(htmlElem).height);
     console.log(width, height);
 
-    const svg = await htmlToSvg(htmlElem);
     const pdfDoc = new jsPDF({
       unit: "px",
       format: [width, height],
     });
 
     // SVG to PDF
-    pdfDoc.svg(svg, 0, 0, width, height).then(() => {
-      pdfDoc.save("image.pdf");
+    pdfDoc.html(htmlElem, 0, 0, width, height).then(() => {
+      pdfDoc.save("images.pdf");
     });
   };
 
@@ -31,7 +30,7 @@ const PDFDownloader = () => {
       >
         <div id="paintArea" style={{ background: "white", position: "relative" }}>
           <img src={BgImage} style={{ display: "block", minWidth: "100%", minHeight: "100%" }} />
-          <img src={QRImage} style={{ width: "100px", position: "absolute", top: "50px", left: "50px" }} />
+          <img src={BgImage} style={{ width: "100px", position: "absolute", top: "50px", left: "50px" }} />
           <span
             style={{
               fontSize: "2rem",
